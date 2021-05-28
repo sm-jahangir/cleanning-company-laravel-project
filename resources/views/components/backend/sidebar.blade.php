@@ -18,7 +18,7 @@
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                     <li class="nk-menu-item">
-                        <a href="html/index.html" class="nk-menu-link">
+                        <a href="{{ route('admin.dashboard') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
                             <span class="nk-menu-text">Dashboard</span>
                         </a>
@@ -41,11 +41,11 @@
                                         class="nk-menu-text">User List</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/user-details-regular.html" class="nk-menu-link"><span
+                                <a href="{{ route('admin.roles.create') }}" class="nk-menu-link"><span
                                         class="nk-menu-text">Role Add</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/user-profile-regular.html" class="nk-menu-link"><span
+                                <a href="{{ route('admin.roles.index') }}" class="nk-menu-link"><span
                                         class="nk-menu-text">Role List</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->

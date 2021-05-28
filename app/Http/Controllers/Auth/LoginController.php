@@ -32,7 +32,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
 
-        if ( $user->can('dashboard-view') || $user->hasAnyRole('super-admin')  ) {// do your margic here
+        if ( $user->can('dashboard-view') ) {// do your margic here
             return redirect()->route('admin.dashboard');
         }
     
