@@ -23,5 +23,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('admin', [DashboardController::class, 'index']);
+
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], function(){
+
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+});
+
+
+
+
+
 
