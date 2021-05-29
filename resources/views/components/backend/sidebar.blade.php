@@ -1,7 +1,7 @@
 <div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu">
     <div class="nk-sidebar-element nk-sidebar-head">
         <div class="nk-sidebar-brand">
-            <a href="html/index.html" class="logo-link nk-sidebar-logo">
+            <a href="{{ route('admin.dashboard') }}" class="logo-link nk-sidebar-logo">
                 <img class="logo-light logo-img" src="{{asset('backend')}}/images/logo.png"
                     srcset="{{asset('backend')}}/images/logo2x.png 2x" alt="logo">
                 <img class="logo-dark logo-img" src="{{asset('backend')}}/images/logo-dark.png"
@@ -26,30 +26,38 @@
                     <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">Pre-Built Pages</h6>
                     </li><!-- .nk-menu-heading -->
-                    <li class="nk-menu-item has-sub">
-                        <a href="#" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                            <span class="nk-menu-text">User Manage</span>
-                        </a>
-                        <ul class="nk-menu-sub">
-                            <li class="nk-menu-item">
-                                <a href="html/user-list-regular.html" class="nk-menu-link"><span
-                                        class="nk-menu-text">User Add</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/user-list-compact.html" class="nk-menu-link"><span
-                                        class="nk-menu-text">User List</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="{{ route('admin.roles.create') }}" class="nk-menu-link"><span
-                                        class="nk-menu-text">Role Add</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="{{ route('admin.roles.index') }}" class="nk-menu-link"><span
-                                        class="nk-menu-text">Role List</span></a>
-                            </li>
-                        </ul><!-- .nk-menu-sub -->
-                    </li><!-- .nk-menu-item -->
+                    
+                    @if (auth()->user()->can('admin-view') || auth()->user()->can('role-view')) 
+                        <li class="nk-menu-item has-sub">
+                            <a href="#" class="nk-menu-link nk-menu-toggle">
+                                <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                <span class="nk-menu-text">User Manage</span>
+                            </a>
+                            <ul class="nk-menu-sub">
+                                @if (auth()->user()->can('admin-view')) 
+                                    <li class="nk-menu-item">
+                                        <a href="{{ route('admin.users.create') }}" class="nk-menu-link"><span
+                                                class="nk-menu-text">User Add</span></a>
+                                    </li>
+                                    <li class="nk-menu-item">
+                                        <a href="{{ route('admin.users.index') }}" class="nk-menu-link"><span
+                                                class="nk-menu-text">User List</span></a>
+                                    </li>
+                                @endif
+                                @if (auth()->user()->can('role-view')) 
+                                    <li class="nk-menu-item">
+                                        <a href="{{ route('admin.roles.create') }}" class="nk-menu-link"><span
+                                                class="nk-menu-text">Role Add</span></a>
+                                    </li>
+                                    <li class="nk-menu-item">
+                                        <a href="{{ route('admin.roles.index') }}" class="nk-menu-link"><span
+                                                class="nk-menu-text">Role List</span></a>
+                                    </li>
+                                @endif
+
+                            </ul><!-- .nk-menu-sub -->
+                        </li><!-- .nk-menu-item -->
+                    @endif
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
