@@ -76,16 +76,16 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
-                            <span class="nk-menu-text">Transactions</span>
+                            <span class="nk-menu-text">Category</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/transaction-basic.html" class="nk-menu-link"><span
-                                        class="nk-menu-text">Tranx List - Basic</span></a>
+                                <a href="{{ route('admin.category.create') }}" class="nk-menu-link"><span
+                                        class="nk-menu-text">Category Add</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/transaction-crypto.html" class="nk-menu-link"><span
-                                        class="nk-menu-text">Tranx List - Crypto</span></a>
+                                <a href="{{ route('admin.category.index') }}" class="nk-menu-link"><span
+                                        class="nk-menu-text">Category List</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
