@@ -15,7 +15,7 @@
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{asset('backend')}}/assets/css/dashlite.css?ver=2.1.0">
     <link id="skin-default" rel="stylesheet" href="{{asset('backend')}}/assets/css/theme.css?ver=2.1.0">
-
+    @stack('css')
 </head>
 
 <body class="nk-body bg-lighter npc-general has-sidebar ">
@@ -46,6 +46,7 @@
     <script src="{{asset('backend')}}/assets/js/bundle.js?ver=2.1.0"></script>
     <script src="{{asset('backend')}}/assets/js/scripts.js?ver=2.1.0"></script>
     <script src="{{asset('backend')}}/assets/js/charts/gd-default.js?ver=2.1.0"></script>
+    @stack('js')
 </body>
 
 </html>

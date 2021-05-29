@@ -61,16 +61,15 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
-                            <span class="nk-menu-text">AML / KYCs</span>
+                            <span class="nk-menu-text">Tags</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/kyc-list-regular.html" class="nk-menu-link"><span class="nk-menu-text">KYC
-                                        List - Regular</span></a>
+                                <a href="{{ route('admin.tags.create') }}" class="nk-menu-link"><span class="nk-menu-text">Tag Add</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/kyc-details-regular.html" class="nk-menu-link"><span
-                                        class="nk-menu-text">KYC Details - Regular</span></a>
+                                <a href="{{ route('admin.tags.index') }}" class="nk-menu-link"><span
+                                        class="nk-menu-text">Tag List</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
