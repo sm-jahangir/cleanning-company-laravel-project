@@ -39,10 +39,14 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::resource('/post', PostController::class, ['names' => 'post']);
     Route::get('pending/post', [PostController::class, 'pending'])->name('post.pending');
     Route::get('post/{id}/approve', [PostController::class, 'approval'])->name('post.approve');
+
+    Route::get('subscribers', [App\Http\Controllers\Backend\SubscriberController::class, 'index'])->name('subscibers.index');
+    Route::get('subscribers/{subscriber}', [App\Http\Controllers\Backend\SubscriberController::class, 'destroy'])->name('subscibers.destroy');
 });
 
 Route::view('/', 'frontend.index');
 Route::view('/contact', 'frontend.contact');
+Route::post('subscriber', [App\Http\Controllers\Frontend\SubscriberController::class, 'store'])->name('subscriber.store');
 
 
 

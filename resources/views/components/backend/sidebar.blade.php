@@ -447,9 +447,9 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="html/email-templates.html" class="nk-menu-link">
+                        <a href="{{ route('admin.subscibers.index') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-text-rich"></em></span>
-                            <span class="nk-menu-text">Email Template</span>
+                            <span class="nk-menu-text">Subscribers</span>
                         </a>
                     </li>
                 </ul><!-- .nk-menu -->

@@ -1,8 +1,6 @@
 @extends('layouts.frontend.app')
 
 @section('FrontendContent')
-      
-
 <section class="hero-wrap hero-wrap-2" style="background-image: url('{{asset('frontend')}}/images/bg_2.jpg');"
 data-stellar-background-ratio="0.5">
 <div class="overlay"></div>
@@ -137,9 +135,10 @@ data-stellar-background-ratio="0.5">
                     <h2 class="mb-0" style="color:white; font-size: 24px;">Subcribe to our Newsletter</h2>
                 </div>
                 <div class="col-md-6 d-flex align-items-center">
-                    <form action="#" class="subscribe-form">
+                    <form action="{{ route('subscriber.store') }}" method="POST" class="subscribe-form">
+                        @csrf
                         <div class="form-group d-flex">
-                            <input type="text" class="form-control" placeholder="Enter email address">
+                            <input type="email" name="email" class="form-control" placeholder="Enter email address">
                             <input type="submit" value="Subscribe" class="submit px-3">
                         </div>
                     </form>

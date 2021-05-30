@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/magnific-popup.css">
 
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/flaticon.css">
+    @stack('frontendcss')
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css">
 </head>
 
@@ -55,6 +56,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
     </script>
     <script src="{{ asset('frontend') }}/js/google-map.js"></script>
+    @stack('frontendjs')
     <script src="{{ asset('frontend') }}/js/main.js"></script>
 
 </body>
