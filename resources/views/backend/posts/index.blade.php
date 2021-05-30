@@ -2,7 +2,7 @@
 
 @push('css')
 
-{{-- <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> --}}
+<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 @endpush
 @section('MainBackendContent')
 
@@ -13,9 +13,9 @@
     <div class="container-fluid">
         <div class="nk-block-head nk-block-head-lg wide-sm">
             <div class="nk-block-head-content">
-                <div class="nk-block-head-sub"><a class="back-to" href="html/components.html"><em
-                            class="icon ni ni-arrow-left"></em><span>Components</span></a></div>
-                <h2 class="nk-block-title fw-normal">DataTable Example</h2>
+                <div class="nk-block-head-sub"><a class="back-to" href="{{route('admin.dashboard')}}"><em
+                            class="icon ni ni-arrow-left"></em><span>Back TO Dashboard</span></a></div>
+                <h2 class="nk-block-title fw-normal">Post List</h2>
                 <div class="nk-block-des">
                     <p class="lead">Using <a href="https://datatables.net/" target="_blank">DataTables</a>,
                         add advanced interaction controls to your HTML tables.</p>
@@ -84,11 +84,7 @@
                                     @endif
                                 </td>
                                 <td class="nk-tb-col tb-col-lg">
-                                    @if($post->status == true)
-                                    <span class="badge badge-pill badge-primary">Published</span>
-                                    @else
-                                    <span class="badge bg-danger">Pending</span>
-                                    @endif
+                                    {{ $post->updated_at->diffForHumans() }}
                                 </td>
                                 <td class="nk-tb-col tb-col-md">
                                     @if($post->status == true)
@@ -171,7 +167,7 @@
 
 @endsection
 @push('js')
-{{-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-{!! Toastr::message() !!} --}}
+{!! Toastr::message() !!}
 @endpush

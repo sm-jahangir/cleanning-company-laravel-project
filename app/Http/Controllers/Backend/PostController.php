@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Storage;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostController extends Controller
 {
@@ -26,7 +32,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return "Hello";
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('backend.posts.create',compact('categories','tags'));
     }
 
     /**
@@ -37,7 +45,41 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+            'image' => 'required',
+            'categories' => 'required',
+            'tags' => 'required',
+            'body' => 'required',
+        ]);
+        
+        $post = new Post();
+
+
+        $image = $request->file('image');
+        $ext = $image->extension();
+        $file = time(). '.'.$ext;
+        $image->storeAs('public/post',$file);//above 4 line process the image code
+        $post->image =  $file;//ai code ta image ke insert kore
+
+        $post->title = $request->title;
+        $post->slug = SlugService::createSlug(Category::class, 'slug', $request->title);
+        $post->user_id = Auth::id();
+        $post->body = $request->body;
+        if (isset($request->status)) {
+            $post->status = true;
+        } else {
+            $post->status = false;
+        }
+        $post->is_approved = true;
+        $post->save();
+
+        $post->categories()->attach($request->categories);
+        $post->tags()->attach($request->tags);
+
+        Toastr::success('Post Successfully Saved :)','Success');
+        return redirect()->route('admin.post.index');
+
     }
 
     /**
@@ -59,7 +101,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return $id;
+        $post = Post::find($id);
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('backend.posts.edit',compact('post', 'categories','tags'));
     }
 
     /**
@@ -71,7 +116,42 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $this->validate($request,[
+            'title' => 'required',
+            'image' => 'image',
+            'categories' => 'required',
+            'tags' => 'required',
+        ]);
+
+        $post = Post::find($id);
+
+        if($request->has('image')){
+            $image = $request->file('image');
+            $ext = $image->extension();
+            $file = time(). '.'.$ext;
+            $image->storeAs('public/post',$file);//above 4 line process the image code
+            $post->image =  $file;//ai code ta image ke insert kore
+        }
+
+        
+        $post->title = $request->title;
+        $post->slug = SlugService::createSlug(Category::class, 'slug', $request->title);
+        $post->user_id = Auth::id();
+        $post->body = $request->body;
+        if (isset($request->status)) {
+            $post->status = true;
+        } else {
+            $post->status = false;
+        }
+        $post->is_approved = true;
+        $post->save();
+
+        $post->categories()->sync($request->categories);
+        $post->tags()->sync($request->tags);
+   
+        Toastr::success('Post Successfully Updated', 'success');
+        return redirect()->route('admin.post.index');
     }
 
     /**
@@ -82,6 +162,15 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        return $id;
+        $post = Post::find($id);
+        if (Storage::disk('public')->exists('post/'.$post->image))
+        {
+            Storage::disk('public')->delete('post/'.$post->image);
+        }
+        $post->categories()->detach();
+        $post->tags()->detach();
+        $post->delete();
+        Toastr::success('Post Successfully Deleted :)','Success');
+        return redirect()->back();
     }
 }
