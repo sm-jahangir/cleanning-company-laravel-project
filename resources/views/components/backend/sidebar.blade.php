@@ -102,6 +102,9 @@
                             <li class="nk-menu-item">
                                 <a href="{{ route('admin.post.index') }}" class="nk-menu-link"><span class="nk-menu-text">Post List</span></a>
                             </li>
+                            <li class="nk-menu-item">
+                                <a href="{{ route('admin.post.pending') }}" class="nk-menu-link"><span class="nk-menu-text">Post Pending</span></a>
+                            </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-heading">

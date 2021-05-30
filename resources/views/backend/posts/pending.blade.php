@@ -14,7 +14,7 @@
         <div class="nk-block-head nk-block-head-lg wide-sm">
             <div class="nk-block-head-content">
                 <div class="nk-block-head-sub"><a class="back-to" href="{{route('admin.dashboard')}}"><em
-                            class="icon ni ni-arrow-left"></em><span>Back TO Dashboard</span></a></div>
+                            class="icon ni ni-arrow-left"></em><span>Back To Dashboard</span></a></div>
                 <h2 class="nk-block-title fw-normal">Post List</h2>
                 <div class="nk-block-des">
                     <p class="lead">Using <a href="https://datatables.net/" target="_blank">DataTables</a>,
@@ -130,6 +130,7 @@
                                                 </a>
                                             </li>
                                         @endif
+
                                         <li>
                                             <div class="drodown">
                                                 <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"

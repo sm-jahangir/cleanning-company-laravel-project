@@ -63,7 +63,7 @@ class PostController extends Controller
         $post->image =  $file;//ai code ta image ke insert kore
 
         $post->title = $request->title;
-        $post->slug = SlugService::createSlug(Category::class, 'slug', $request->title);
+        $post->slug = SlugService::createSlug(Post::class, 'slug', $request->title);
         $post->user_id = Auth::id();
         $post->body = $request->body;
         if (isset($request->status)) {
@@ -71,7 +71,12 @@ class PostController extends Controller
         } else {
             $post->status = false;
         }
-        $post->is_approved = true;
+        if (Auth::user()->hasAnyRole(['super-admin', 'admin'])) {
+            $post->is_approved = true;
+        } else {
+            $post->is_approved = false;
+        }
+        
         $post->save();
 
         $post->categories()->attach($request->categories);
@@ -136,7 +141,7 @@ class PostController extends Controller
 
         
         $post->title = $request->title;
-        $post->slug = SlugService::createSlug(Category::class, 'slug', $request->title);
+        $post->slug = SlugService::createSlug(Post::class, 'slug', $request->title);
         $post->user_id = Auth::id();
         $post->body = $request->body;
         if (isset($request->status)) {
@@ -144,7 +149,11 @@ class PostController extends Controller
         } else {
             $post->status = false;
         }
-        $post->is_approved = true;
+        if (Auth::user()->hasAnyRole(['super-admin', 'admin'])) {
+            $post->is_approved = true;
+        } else {
+            $post->is_approved = false;
+        }
         $post->save();
 
         $post->categories()->sync($request->categories);
@@ -171,6 +180,24 @@ class PostController extends Controller
         $post->tags()->detach();
         $post->delete();
         Toastr::success('Post Successfully Deleted :)','Success');
+        return redirect()->back();
+    }
+    public function pending()
+    {
+        $posts = Post::where('is_approved', false)->get();
+        return view('backend.posts.pending', compact('posts'));
+    }
+    public function approval($id)
+    {
+        $post = Post::find($id);
+        if ($post->is_approved == false)
+        {
+            $post->is_approved = true;
+            $post->save();
+            Toastr::success('Post Successfully Approved :)','Success');
+        } else {
+            Toastr::info('This Post is already approved','Info');
+        }
         return redirect()->back();
     }
 }
