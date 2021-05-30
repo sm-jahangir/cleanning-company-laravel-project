@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\UserController;
@@ -35,7 +36,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::resource('/users', UserController::class, ['names' => 'users']);
     Route::resource('/tags', TagController::class, ['names' => 'tags']);
     Route::resource('/category', CategoryController::class, ['names' => 'category']);
-    Route::resource('/post', CategoryController::class, ['names' => 'post']);
+    Route::resource('/post', PostController::class, ['names' => 'post']);
 });
 
 
