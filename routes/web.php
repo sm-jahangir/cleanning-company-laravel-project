@@ -35,6 +35,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::resource('/users', UserController::class, ['names' => 'users']);
     Route::resource('/tags', TagController::class, ['names' => 'tags']);
     Route::resource('/category', CategoryController::class, ['names' => 'category']);
+    Route::resource('/post', CategoryController::class, ['names' => 'post']);
 });
 
 

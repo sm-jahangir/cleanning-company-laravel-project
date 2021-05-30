@@ -92,29 +92,15 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-grid-alt"></em></span>
-                            <span class="nk-menu-text">Applications</span>
+                            <span class="nk-menu-text">Post</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/apps-messages.html" class="nk-menu-link"><span
-                                        class="nk-menu-text">Messages</span></a>
+                                <a href="{{ route('admin.post.create') }}" class="nk-menu-link"><span
+                                        class="nk-menu-text">Post Add</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/apps-inbox.html" class="nk-menu-link"><span class="nk-menu-text">Inbox /
-                                        Mail</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/apps-file-manager.html" class="nk-menu-link"><span
-                                        class="nk-menu-text">File Manager</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/apps-chats.html" class="nk-menu-link"><span class="nk-menu-text">Chats /
-                                        Messenger</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/apps-calendar.html" class="nk-menu-link"><span
-                                        class="nk-menu-text">Calendar</span><span
-                                        class="nk-menu-badge badge-warning">New</span></a>
+                                <a href="{{ route('admin.post.index') }}" class="nk-menu-link"><span class="nk-menu-text">Post List</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
