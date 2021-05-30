@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Post;
-use App\Models\Category;
 use App\Models\Tag;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
+use App\Models\Subscriber;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Notifications\NewAuthorPost;
+use App\Notifications\AuthorPostApproved;
+use App\Notifications\NewPostNotify;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostController extends Controller
@@ -75,12 +81,24 @@ class PostController extends Controller
             $post->is_approved = true;
         } else {
             $post->is_approved = false;
+            $users = User::where('id','3')->get();
+            Notification::send($users, new NewAuthorPost($post));
         }
         
         $post->save();
 
         $post->categories()->attach($request->categories);
         $post->tags()->attach($request->tags);
+
+
+        
+        $subscribers = Subscriber::all();
+        foreach ($subscribers as $subscriber)
+        {
+            Notification::route('mail',$subscriber->email)
+                ->notify(new NewPostNotify($post));
+        }
+
 
         Toastr::success('Post Successfully Saved :)','Success');
         return redirect()->route('admin.post.index');
@@ -194,6 +212,7 @@ class PostController extends Controller
         {
             $post->is_approved = true;
             $post->save();
+            $post->user->notify(new AuthorPostApproved($post));
             Toastr::success('Post Successfully Approved :)','Success');
         } else {
             Toastr::info('This Post is already approved','Info');
