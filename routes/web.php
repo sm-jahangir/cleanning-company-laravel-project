@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -41,7 +41,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::get('post/{id}/approve', [PostController::class, 'approval'])->name('post.approve');
 });
 
-
+Route::view('/', 'frontend.index');
+Route::view('/contact', 'frontend.contact');
 
 
 
