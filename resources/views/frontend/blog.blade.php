@@ -34,7 +34,7 @@
                       <div class="card-body">
 
                           <div class="blog-entry align-self-stretch">
-                              <a href="blog-single.html" class="block-20 rounded"
+                              <a href="{{ route('post.blog.details', $post->slug) }}" class="block-20 rounded"
                                   style="background-image: url('{{asset('storage/post').'/'.$post['image']}}');">
                               </a>
                               <div class="text mt-3 px-4">
