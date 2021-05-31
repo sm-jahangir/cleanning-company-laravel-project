@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -18,6 +19,12 @@ class PostController extends Controller
     public function details($slug)
     {
         $post = Post::where('slug',$slug)->first();
+
+        $blogKey = 'blog_' . $post->id;
+        if (!Session::has($blogKey)) {
+            $post->increment('view_count');
+            Session::put($blogKey, 1);
+        }
         
         $categories = Category::latest()->paginate(5);
         $tags = Tag::latest()->paginate(5);
