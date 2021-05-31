@@ -452,6 +452,12 @@
                             <span class="nk-menu-text">Subscribers</span>
                         </a>
                     </li>
+                    <li class="nk-menu-item">
+                        <a href="{{ route('admin.settings.index') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-text-rich"></em></span>
+                            <span class="nk-menu-text">Settings</span>
+                        </a>
+                    </li>
                 </ul><!-- .nk-menu -->
             </div><!-- .nk-sidebar-menu -->
         </div><!-- .nk-sidebar-content -->

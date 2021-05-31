@@ -66,6 +66,7 @@ class RolePermissionSeeder extends Seeder
         // create demo users
         $user = \App\Models\User::factory()->create([
             'name' => 'Editor User',
+            'username' => 'editor-user',
             'email' => 'editor@mail.com',
             'password' => Hash::make('password'),
         ]);
@@ -73,6 +74,7 @@ class RolePermissionSeeder extends Seeder
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Admin User',
+            'username' => 'admin-user',
             'email' => 'admin@mail.com',
             'password' => Hash::make('password'),
         ]);
@@ -80,6 +82,7 @@ class RolePermissionSeeder extends Seeder
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Super-Admin User',
+            'username' => 'super-admin-user',
             'email' => 'superadmin@mail.com',
             'password' => Hash::make('password'),
         ]);

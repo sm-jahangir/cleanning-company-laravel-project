@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\SettingsController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PostController;
@@ -42,6 +43,11 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     Route::get('subscribers', [App\Http\Controllers\Backend\SubscriberController::class, 'index'])->name('subscibers.index');
     Route::get('subscribers/{subscriber}', [App\Http\Controllers\Backend\SubscriberController::class, 'destroy'])->name('subscibers.destroy');
+
+    // Settings Work Functionality
+    Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::put('profile-update', [SettingsController::class, 'updateprofile'])->name('settings.updateprofile');
+    Route::put('profile-updatepassword', [SettingsController::class, 'updatepassword'])->name('settings.updatepassword');
 });
 
 Route::view('/', 'frontend.index');

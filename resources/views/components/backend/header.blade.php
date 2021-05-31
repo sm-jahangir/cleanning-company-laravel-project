@@ -58,7 +58,7 @@
                                     <li><a href="html/user-profile-regular.html"><em
                                                 class="icon ni ni-user-alt"></em><span>View
                                                 Profile</span></a></li>
-                                    <li><a href="html/user-profile-setting.html"><em
+                                    <li><a href="{{ route('admin.settings.index') }}"><em
                                                 class="icon ni ni-setting-alt"></em><span>Account
                                                 Setting</span></a></li>
                                     <li><a href="html/user-profile-activity.html"><em
