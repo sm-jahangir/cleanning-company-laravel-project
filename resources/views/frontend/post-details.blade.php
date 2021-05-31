@@ -40,140 +40,78 @@
                 </div>
 
                 <div class="pt-5 mt-5">
-                    <h3 class="mb-5">6 Comments</h3>
-                    <ul class="comment-list">
-                        <li class="comment">
-                            <div class="vcard bio">
-                                <img src="{{ asset('frontend') }}/images/person_1.jpg" alt="Image placeholder">
-                            </div>
-                            <div class="comment-body">
-                                <h3>John Doe</h3>
-                                <div class="meta">February 24, 2020 at 2:21pm</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                                    necessitatibus,
-                                    ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam
-                                    voluptas earum
-                                    impedit necessitatibus, nihil?</p>
-                                <p><a href="#" class="reply">Reply</a></p>
-                            </div>
-                        </li>
+                    @if ($post->comments->count() <= 1)
+                        <h3 class="mb-5">{{ $post->comments->count() }} Comment</h3>
+                    @else
+                        <h3 class="mb-5">{{ $post->comments->count() }} Comments</h3>
+                    @endif
 
-                        <li class="comment">
-                            <div class="vcard bio">
-                                <img src="{{ asset('frontend') }}/images/person_1.jpg" alt="Image placeholder">
-                            </div>
-                            <div class="comment-body">
-                                <h3>John Doe</h3>
-                                <div class="meta">February 24, 2020 at 2:21pm</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                                    necessitatibus,
-                                    ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam
-                                    voluptas earum
-                                    impedit necessitatibus, nihil?</p>
-                                <p><a href="#" class="reply">Reply</a></p>
-                            </div>
+                    @if ($post->comments->count() > 0)
+                        <ul class="comment-list">
+                            @foreach ($post->comments as $comment)
+                            <li class="comment">
+                                <div class="vcard bio">
+                                    <img src="{{ asset('storage/backend/profile'). '/' . $comment->user->image }}" alt="Image placeholder">
+                                </div>
+                                <div class="comment-body">
+                                    <h3>{{ $comment->user->name }}</h3>
+                                    <div class="meta">{{ $comment->created_at->diffForHumans() }}</div>
+                                    <p>{{ $comment->comment }}</p>
+                                </div>
+                            </li>
+                            @endforeach
 
-                            <ul class="children">
-                                <li class="comment">
-                                    <div class="vcard bio">
-                                        <img src="{{ asset('frontend') }}/images/person_1.jpg" alt="Image placeholder">
-                                    </div>
-                                    <div class="comment-body">
-                                        <h3>John Doe</h3>
-                                        <div class="meta">February 24, 2020 at 2:21pm</div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
-                                            laborum
-                                            necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim
-                                            sapiente iste iure!
-                                            Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                        <p><a href="#" class="reply">Reply</a></p>
-                                    </div>
-
-
-                                    <ul class="children">
-                                        <li class="comment">
-                                            <div class="vcard bio">
-                                                <img src="{{asset('storage/post').'/'.$post['image']}}"
-                                                    alt="Image placeholder">
-                                            </div>
-                                            <div class="comment-body">
-                                                <h3>John Doe</h3>
-                                                <div class="meta">February 24, 2020 at 2:21pm</div>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur
-                                                    quidem laborum
-                                                    necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe
-                                                    enim sapiente iste
-                                                    iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                                <p><a href="#" class="reply">Reply</a></p>
-                                            </div>
-
-                                            <ul class="children">
-                                                <li class="comment">
-                                                    <div class="vcard bio">
-                                                        <img src="{{ asset('frontend') }}/images/person_1.jpg"
-                                                            alt="Image placeholder">
-                                                    </div>
-                                                    <div class="comment-body">
-                                                        <h3>John Doe</h3>
-                                                        <div class="meta">February 24, 2020 at 2:21pm</div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                            Pariatur quidem laborum
-                                                            necessitatibus, ipsam impedit vitae autem, eum officia,
-                                                            fugiat saepe enim sapiente iste
-                                                            iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                                        <p><a href="#" class="reply">Reply</a></p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="comment">
-                            <div class="vcard bio">
-                                <img src="{{ asset('frontend') }}/images/person_1.jpg" alt="Image placeholder">
-                            </div>
-                            <div class="comment-body">
-                                <h3>John Doe</h3>
-                                <div class="meta">February 24, 2020 at 2:21pm</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                                    necessitatibus,
-                                    ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam
-                                    voluptas earum
-                                    impedit necessitatibus, nihil?</p>
-                                <p><a href="#" class="reply">Reply</a></p>
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- END comment-list -->
+                        </ul>
+                        <!-- END comment-list --> 
+                    @else
+                        <p>No Comment Yet, Be the First :)</p>
+                    @endif
 
                     <div class="comment-form-wrap pt-5">
                         <h3 class="mb-5">Leave a comment</h3>
-                        <form action="#" class="p-5 bg-light">
-                            <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" class="form-control" id="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" class="form-control" id="email">
-                            </div>
-                            <div class="form-group">
-                                <label for="website">Website</label>
-                                <input type="url" class="form-control" id="website">
-                            </div>
 
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
-                            </div>
+                        @guest
+                            <form action="{{ route('admin.comment.store', $post->id) }}" method="POST" class="p-5 bg-light">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="name">Name *</label>
+                                    <input type="text" name="name" class="form-control" id="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input type="email" name="email" class="form-control" id="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="website">Website</label>
+                                    <input type="url" name="website" class="form-control" id="website">
+                                </div>
 
-                        </form>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea name="comment" id="message" cols="30" rows="10" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                                </div>
+
+                            </form>
+                        @else
+                            
+                            <form action="{{ route('admin.comment.store', $post->id) }}" method="POST" class="p-5 bg-light">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="message">Comment Message</label>
+                                    <textarea name="comment" id="message" cols="30" rows="10" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                                </div>
+
+                            </form>
+                        @endguest
+
+
+
                     </div>
                 </div>
 
