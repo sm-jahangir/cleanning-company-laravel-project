@@ -441,9 +441,9 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="html/components/misc/sweet-alert.html" class="nk-menu-link">
+                        <a href="{{ route('admin.favorite.index') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-caution"></em></span>
-                            <span class="nk-menu-text">Sweet Alert</span>
+                            <span class="nk-menu-text">Favorite Post List</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">

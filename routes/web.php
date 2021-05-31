@@ -53,6 +53,9 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     // favorite Post functionality
     
    Route::post('favorite/{post}/add', [FavoriteController::class, 'add'])->name('post.favorite');
+    //Favorite Post for Backend;
+    Route::get('favorite', [FavoriteController::class, 'index'])->name('favorite.index');
+    Route::delete('favorite/{post}/remove', [FavoriteController::class, 'removefavpost'])->name('post.removefavpost');
 });
 
 Route::view('/', 'frontend.index');

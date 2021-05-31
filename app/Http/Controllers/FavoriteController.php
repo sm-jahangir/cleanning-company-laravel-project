@@ -21,4 +21,22 @@ class FavoriteController extends Controller
             return redirect()->back();
         }
     }
+    public function index()
+    {
+        $posts = Auth::user()->favorite_posts;
+        return view('backend.favorite',compact('posts'));
+    }
+    
+    public function removefavpost($post)
+    {
+        $user = Auth::user();
+        $isFavorite = $user->favorite_posts()->where('post_id',$post)->count();
+
+        if ($isFavorite == 1)
+        {
+            $user->favorite_posts()->detach($post);
+            return redirect()->back();
+        }
+    }
+
 }
