@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -48,10 +49,15 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::put('profile-update', [SettingsController::class, 'updateprofile'])->name('settings.updateprofile');
     Route::put('profile-updatepassword', [SettingsController::class, 'updatepassword'])->name('settings.updatepassword');
+
+    // favorite Post functionality
+    
+   Route::post('favorite/{post}/add', [FavoriteController::class, 'add'])->name('post.favorite');
 });
 
 Route::view('/', 'frontend.index');
 Route::view('/contact', 'frontend.contact');
+Route::get('/blog', [App\Http\Controllers\Frontend\PostController::class, 'index'])->name('post.blog.index');
 Route::post('subscriber', [App\Http\Controllers\Frontend\SubscriberController::class, 'store'])->name('subscriber.store');
 
 
