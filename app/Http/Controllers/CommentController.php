@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CommentController extends Controller
 {
@@ -22,5 +23,23 @@ class CommentController extends Controller
         $comment->save();
         return redirect()->back();
     }
-    
+    public function index()
+    {
+        $comments = Comment::all();
+        return view('backend.comments',compact('comments'));
+    }
+    public function destroy($comment)
+    {
+        $comment = Comment::findOrFail($comment);
+
+        if ($comment->post->user->id == Auth::id())
+        {
+            $comment->delete();
+            Toastr::success('Comment Successfully Deleted','Success');
+        } else {
+            Toastr::error('You are not authorized to delete this comment :(','Access Denied !!!');
+        }
+        return redirect()->back();
+    }
+
 }

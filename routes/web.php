@@ -61,6 +61,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     // Comment Route
     
    Route::post('comment/{post}',[CommentController::class, 'store'])->name('comment.store');
+   Route::get('comment',[CommentController::class, 'index'])->name('comment.index');
+   Route::delete('comment/{comment}',[CommentController::class, 'destroy'])->name('comment.destroy');
 });
 
 Route::view('/', 'frontend.index');

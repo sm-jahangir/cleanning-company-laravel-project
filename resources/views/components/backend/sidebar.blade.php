@@ -435,9 +435,9 @@
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="html/components/misc/toastr.html" class="nk-menu-link">
+                        <a href="{{route('admin.comment.index')}}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-alert-circle"></em></span>
-                            <span class="nk-menu-text">Toastr</span>
+                            <span class="nk-menu-text">Comments</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
