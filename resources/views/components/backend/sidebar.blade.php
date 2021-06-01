@@ -211,28 +211,14 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-files"></em></span>
-                            <span class="nk-menu-text">Other Pages</span>
+                            <span class="nk-menu-text">Services</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/_blank.html" class="nk-menu-link"><span class="nk-menu-text">Blank /
-                                        Startup</span></a>
+                                <a href="{{route('admin.service.create')}}" class="nk-menu-link"><span class="nk-menu-text">Service Add</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/pages/faqs.html" class="nk-menu-link"><span class="nk-menu-text">Faqs /
-                                        Help</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/pages/terms-policy.html" class="nk-menu-link"><span
-                                        class="nk-menu-text">Terms / Policy</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/pages/regular-v1.html" class="nk-menu-link"><span
-                                        class="nk-menu-text">Regular Page - v1</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/pages/regular-v2.html" class="nk-menu-link"><span
-                                        class="nk-menu-text">Regular Page - v2</span></a>
+                                <a href="{{route('admin.service.index')}}" class="nk-menu-link"><span class="nk-menu-text">Services List</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->

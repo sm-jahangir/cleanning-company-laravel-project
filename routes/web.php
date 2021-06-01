@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\TagController;
+use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
@@ -42,6 +43,12 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::resource('/post', PostController::class, ['names' => 'post']);
     Route::get('pending/post', [PostController::class, 'pending'])->name('post.pending');
     Route::get('post/{id}/approve', [PostController::class, 'approval'])->name('post.approve');
+
+
+    // Services Area
+    Route::resource('service', ServiceController::class, ['names' => 'service']);
+
+
 
     Route::get('subscribers', [App\Http\Controllers\Backend\SubscriberController::class, 'index'])->name('subscibers.index');
     Route::get('subscribers/{subscriber}', [App\Http\Controllers\Backend\SubscriberController::class, 'destroy'])->name('subscibers.destroy');
