@@ -211,6 +211,20 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-files"></em></span>
+                            <span class="nk-menu-text">Cleaners</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a href="{{route('admin.cleaner.create')}}" class="nk-menu-link"><span class="nk-menu-text">Cleaner Add</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="{{route('admin.cleaner.index')}}" class="nk-menu-link"><span class="nk-menu-text">Cleaners List</span></a>
+                            </li>
+                        </ul><!-- .nk-menu-sub -->
+                    </li><!-- .nk-menu-item -->
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-files"></em></span>
                             <span class="nk-menu-text">Services</span>
                         </a>
                         <ul class="nk-menu-sub">

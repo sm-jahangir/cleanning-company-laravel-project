@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function usertocleaner()
+    {
+        return $this->belongsToMany(Cleaner::class)->withTimestamps();
+    }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\SettingsController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CleanerController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\RoleController;
@@ -47,6 +48,9 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 
     // Services Area
     Route::resource('service', ServiceController::class, ['names' => 'service']);
+
+    // Services Area
+    Route::resource('cleaner', CleanerController::class, ['names' => 'cleaner']);
 
 
 
