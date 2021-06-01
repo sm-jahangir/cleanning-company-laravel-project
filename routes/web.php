@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\Backend\SettingsController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CleanerController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,9 +51,10 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     // Services Area
     Route::resource('service', ServiceController::class, ['names' => 'service']);
 
-    // Services Area
+    // Cleaners Area
     Route::resource('cleaner', CleanerController::class, ['names' => 'cleaner']);
 
+    Route::get('appoint', [AppointmentController::class, 'indexbackend'])->name('appoint');
 
 
     Route::get('subscribers', [App\Http\Controllers\Backend\SubscriberController::class, 'index'])->name('subscibers.index');
@@ -76,7 +79,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
    Route::delete('comment/{comment}',[CommentController::class, 'destroy'])->name('comment.destroy');
 });
 
-Route::view('/', 'frontend.index');
+Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::post('appointment/store/', [AppointmentController::class, 'store'])->name('appointment.store');
 Route::view('/contact', 'frontend.contact')->name('contact.page');
 Route::view('/about', 'frontend.about')->name('about.page');
 Route::view('/services', 'frontend.services')->name('services.page');

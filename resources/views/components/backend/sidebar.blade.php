@@ -113,74 +113,16 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-signin"></em></span>
-                            <span class="nk-menu-text">Auth Pages</span>
+                            <span class="nk-menu-text">Appointments</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/pages/auths/auth-login.html" class="nk-menu-link" target="_blank"><span
-                                        class="nk-menu-text">Login / Signin</span></a>
+                                <a href="{{route('admin.appoint')}}" class="nk-menu-link"><span
+                                        class="nk-menu-text">Active Appoint</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/pages/auths/auth-register.html" class="nk-menu-link" target="_blank"><span
-                                        class="nk-menu-text">Register / Signup</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/pages/auths/auth-reset.html" class="nk-menu-link" target="_blank"><span
-                                        class="nk-menu-text">Forgot Password</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/pages/auths/auth-success.html" class="nk-menu-link" target="_blank"><span
-                                        class="nk-menu-text">Success / Confirm</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="#" class="nk-menu-link nk-menu-toggle"><span class="nk-menu-text">Classic
-                                        Version - v2</span></a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/auths/auth-login-v2.html" class="nk-menu-link"
-                                            target="_blank"><span class="nk-menu-text">Login /
-                                                Signin</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/auths/auth-register-v2.html" class="nk-menu-link"
-                                            target="_blank"><span class="nk-menu-text">Register / Signup</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/auths/auth-reset-v2.html" class="nk-menu-link"
-                                            target="_blank"><span class="nk-menu-text">Forgot
-                                                Password</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/auths/auth-success-v2.html" class="nk-menu-link"
-                                            target="_blank"><span class="nk-menu-text">Success /
-                                                Confirm</span></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="#" class="nk-menu-link nk-menu-toggle"><span class="nk-menu-text">No Slider
-                                        Version - v3</span></a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/auths/auth-login-v3.html" class="nk-menu-link"
-                                            target="_blank"><span class="nk-menu-text">Login /
-                                                Signin</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/auths/auth-register-v3.html" class="nk-menu-link"
-                                            target="_blank"><span class="nk-menu-text">Register / Signup</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/auths/auth-reset-v3.html" class="nk-menu-link"
-                                            target="_blank"><span class="nk-menu-text">Forgot
-                                                Password</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/auths/auth-success-v3.html" class="nk-menu-link"
-                                            target="_blank"><span class="nk-menu-text">Success /
-                                                Confirm</span></a>
-                                    </li>
-                                </ul>
+                                <a href="{{route('admin.appoint')}}" class="nk-menu-link"><span
+                                        class="nk-menu-text">Unapproved Appoint</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->

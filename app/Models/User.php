@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Cleaner::class)->withTimestamps();
     }
+    
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }

@@ -13,4 +13,9 @@ class Cleaner extends Model
     {
         return $this->belongsToMany(User::class)->withTimestamps();
     }
+    
+    public function appointment()
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }
