@@ -9,8 +9,8 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-end">
             <div class="col-md-9 ftco-animate pb-5">
-                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i
-                                class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="blog.html">Blog
+                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{{url('/')}}">Home <i
+                                class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="{{ route('post.blog.index') }}">Blog
                             <i class="fa fa-chevron-right"></i></a></span> <span>Blog Single <i
                             class="fa fa-chevron-right"></i></span></p>
                 <h1 class="mb-0 bread">Blog</h1>
@@ -34,7 +34,7 @@
                     <div class="tagcloud">
                       @foreach ($tags as $tag)
                           
-                        <a href="#" class="tag-cloud-link">{{ $tag->name }}</a>
+                        <a href="{{ route('tag.by.post', $tag->slug) }}" class="tag-cloud-link">{{ $tag->name }}</a>
                       @endforeach
                     </div>
                 </div>
@@ -118,10 +118,10 @@
             </div> <!-- .col-md-8 -->
             <div class="col-lg-4 sidebar pl-lg-5 ftco-animate">
                 <div class="sidebar-box">
-                    <form action="#" class="search-form">
+                    <form action="{{ route('blog.search') }}" method="GET" class="search-form">
                         <div class="form-group">
                             <span class="fa fa-search"></span>
-                            <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                            <input type="text" name="query" class="form-control" placeholder="Type a keyword and hit enter">
                         </div>
                     </form>
                 </div>
@@ -141,7 +141,7 @@
                           <a class="blog-img mr-4"
                               style="background-image: url({{asset('storage/post').'/'.$randompost['image']}});"></a>
                           <div class="text">
-                              <h3 class="heading"><a href="#">{{ $randompost->title }}</a>
+                              <h3 class="heading"><a href="{{ route('post.blog.details', $randompost->slug) }}">{{ $randompost->title }}</a>
                               </h3>
                               <div class="meta">
                                   <div><a href="#"><span class="icon-calendar"></span>{{ $randompost->created_at->diffForHumans() }}</a></div>

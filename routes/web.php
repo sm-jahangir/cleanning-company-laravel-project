@@ -74,6 +74,7 @@ Route::get('tag/{slug}', [App\Http\Controllers\Frontend\PostController::class, '
 
 Route::view('/single-post', 'frontend.post-details');
 Route::post('subscriber', [App\Http\Controllers\Frontend\SubscriberController::class, 'store'])->name('subscriber.store');
+Route::get('search', [App\Http\Controllers\SearchController::class, 'search'])->name('blog.search');
 
 
 
