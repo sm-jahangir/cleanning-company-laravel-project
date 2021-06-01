@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -62,6 +63,7 @@ class UserController extends Controller
             // Create New User
             $user = new User();
             $user->name = $request->name;
+            $user->username = Str::slug($request->name);
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->save();

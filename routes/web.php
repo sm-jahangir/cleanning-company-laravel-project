@@ -66,7 +66,11 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 });
 
 Route::view('/', 'frontend.index');
-Route::view('/contact', 'frontend.contact');
+Route::view('/contact', 'frontend.contact')->name('contact.page');
+Route::view('/about', 'frontend.about')->name('about.page');
+Route::view('/services', 'frontend.services')->name('services.page');
+Route::view('/portfolio', 'frontend.portfolio')->name('portfolio.page');
+Route::view('/pricing', 'frontend.pricing')->name('pricing.page');
 Route::get('/blog', [App\Http\Controllers\Frontend\PostController::class, 'index'])->name('post.blog.index');
 Route::get('post/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'details'])->name('post.blog.details');
 Route::get('category/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'categorybypost'])->name('category.by.post');
