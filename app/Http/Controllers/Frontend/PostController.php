@@ -31,4 +31,14 @@ class PostController extends Controller
         $randomposts = Post::all()->random(3);
         return view('frontend.post-details',compact('post','randomposts', 'categories', 'tags'));
     }
+    public function categorybypost($slug)
+    {
+        $category = Category::where('slug', $slug)->first();
+        return view('frontend.categorybypost', compact('category'));
+    }
+    public function tagbypost($slug)
+    {
+        $tag = Tag::where('slug', $slug)->first();
+        return view('frontend.tagbypost', compact('tag'));
+    }
 }

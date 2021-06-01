@@ -69,6 +69,8 @@ Route::view('/', 'frontend.index');
 Route::view('/contact', 'frontend.contact');
 Route::get('/blog', [App\Http\Controllers\Frontend\PostController::class, 'index'])->name('post.blog.index');
 Route::get('post/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'details'])->name('post.blog.details');
+Route::get('category/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'categorybypost'])->name('category.by.post');
+Route::get('tag/{slug}', [App\Http\Controllers\Frontend\PostController::class, 'tagbypost'])->name('tag.by.post');
 
 Route::view('/single-post', 'frontend.post-details');
 Route::post('subscriber', [App\Http\Controllers\Frontend\SubscriberController::class, 'store'])->name('subscriber.store');

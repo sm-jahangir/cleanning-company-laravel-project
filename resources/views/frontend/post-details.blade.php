@@ -129,7 +129,7 @@
                     <div class="categories">
                         <h3>Category</h3>
                         @foreach ($categories as $category)
-                        <li><a href="#">{{ $category->name }} <span class="fa fa-chevron-right"></span></a></li>
+                        <li><a href="{{ route('category.by.post', $category->slug) }}">{{ $category->name }} <span class="fa fa-chevron-right"></span></a></li>
                         @endforeach
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                     <h3>Tag Cloud</h3>
                     <div class="tagcloud">
                         @foreach ($tags as $tag)
-                        <a href="#" class="tag-cloud-link">{{ $tag->name }}</a>
+                        <a href="{{ route('tag.by.post', $tag->slug) }}" class="tag-cloud-link">{{ $tag->name }}</a>
                         @endforeach
                     </div>
                 </div>
